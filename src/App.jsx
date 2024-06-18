@@ -5,7 +5,7 @@ const App = () => {
 const navigate = useNavigate();
   return (
     <div>
-      <div className="flex items-center justify-center p-[40px]">
+      <div className="flex items-start justify-center p-[10px]">
         <button
         onClick={() => navigate("/chart")}
           type="button"
