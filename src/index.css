@@ -7,3 +7,6 @@
   padding: 0;
   box-sizing: border-box;
 }
+.green-cell {
+  color: rgb(9, 238, 9);
+}
