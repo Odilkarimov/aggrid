@@ -6,9 +6,9 @@ import { useEffect, useMemo, useRef, useState } from "react";
 
 const GridExample = () => {
   const gridRef = useRef();
-  const [rowData, setRowData] = useState([]);
-  const [colDefs, setColDefs] = useState([
-    { field: "athlete" },
+  const [rowData, setRowData] = useState();
+  const [columnDefs, setColumnDefs] = useState([
+    { field: "athlete", },
     { field: "age" },
     { field: "country" },
     { field: "year" },
@@ -21,8 +21,10 @@ const GridExample = () => {
   ]);
   const defaultColDef = useMemo(() => {
     return {
+      filter: true,
       sortable: true,
       filter: true,
+      enableRowGroup: true,
     };
   });
   useEffect(() => {
@@ -34,12 +36,14 @@ const GridExample = () => {
     <div className="flex items-center justify-center ">
       <div className="ag-theme-quartz h-[850px] w-[1600px]">
         <AgGridReact
+        rowGroupPanelShow="always"
           rowData={rowData}
+          animateRows={true}
           rowSelection={"multiple"}
           // pagination={true}
           // paginationPageSize={10}
           // paginationPageSizeSelector={[10, 20]}
-          columnDefs={colDefs}
+          columnDefs={columnDefs}
           defaultColDef={defaultColDef}
         />
       </div>
