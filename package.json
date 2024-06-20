@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "ag-charts-react": "^9.3.1",
+    "ag-grid-charts-enterprise": "^31.3.2",
     "ag-grid-community": "^31.3.2",
     "ag-grid-enterprise": "^31.3.2",
     "ag-grid-react": "^31.3.2",

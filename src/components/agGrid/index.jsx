@@ -2,13 +2,19 @@ import { AgGridReact } from "ag-grid-react";
 import "ag-grid-community/styles/ag-grid.css";
 import "ag-grid-community/styles/ag-theme-quartz.css";
 import "ag-grid-enterprise";
+// import { ModuleRegistry } from "@ag-grid-community/core";
+// import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
+// import { GridChartsModule } from "@ag-grid-enterprise/charts-enterprise";
+import "ag-grid-charts-enterprise";
 import { useEffect, useMemo, useRef, useState } from "react";
 
 const GridExample = () => {
+  const enableCharts = true;
+  const enableRangeSelection = true;
   const gridRef = useRef();
   const [rowData, setRowData] = useState();
   const [columnDefs, setColumnDefs] = useState([
-    { field: "athlete", },
+    { field: "athlete" },
     { field: "age" },
     { field: "country" },
     { field: "year" },
@@ -21,6 +27,8 @@ const GridExample = () => {
   ]);
   const defaultColDef = useMemo(() => {
     return {
+      flex: 1,
+      enableCharts: true,
       filter: true,
       sortable: true,
       filter: true,
@@ -36,13 +44,15 @@ const GridExample = () => {
     <div className="flex items-center justify-center ">
       <div className="ag-theme-quartz h-[850px] w-[1600px]">
         <AgGridReact
-        rowGroupPanelShow="always"
+          enableCharts={enableCharts}
+          enableRangeSelection={enableRangeSelection}
+          rowGroupPanelShow="always"
           rowData={rowData}
           animateRows={true}
           rowSelection={"multiple"}
-          // pagination={true}
-          // paginationPageSize={10}
-          // paginationPageSizeSelector={[10, 20]}
+          pagination={true}
+          paginationPageSize={10}
+          paginationPageSizeSelector={[10, 20]}
           columnDefs={columnDefs}
           defaultColDef={defaultColDef}
         />
